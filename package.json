@@ -8,9 +8,9 @@
     "url": "https://github.com/craigary/nobelium.git"
   },
   "author": {
-    "name": "Craig Hart",
-    "email": "i@craigary.net",
-    "url": "http://craigary.net"
+    "name": "Mohammed AJROUDI",
+    "email": "ajroudi.mohammed@gmail.com",
+    "url": "http://majroudi.com"
   },
   "scripts": {
     "dev": "next dev",
