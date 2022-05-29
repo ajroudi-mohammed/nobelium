@@ -4,12 +4,12 @@ import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
 
 export async function getStaticProps () {
-    const favouritePosts = await getAllPosts({ includePages: false, home: 'favourites' })
-    const podcastPosts = await getAllPosts({ includePages: false, home: 'podcasts' })
+  const favouritePosts = await getAllPosts({ includePages: false, home: 'favourites' })
+  const podcastPosts = await getAllPosts({ includePages: false, home: 'podcasts' })
   return {
     props: {
-        favouritePosts,
-        podcastPosts
+      favouritePosts,
+      podcastPosts
     },
     revalidate: 1
   }
@@ -35,7 +35,7 @@ const index = ({ favouritePosts, podcastPosts }) => {
       </ul>
       <h2 className='text-4xl font-bold mt-8 mb-3'>Colophon</h2>
       <p>
-      This site is built using NextJS and deployed using Vercel. I used tailwind for CSS and for the backend I use my favourite note taking app Notion. 
+      This site is built using NextJS and deployed using Vercel. I used tailwind for CSS and for the backend I use my favourite note taking app Notion.
       </p>
 
     </Container>
