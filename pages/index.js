@@ -1,33 +1,45 @@
 import Container from '@/components/Container'
 import BlogPost from '@/components/BlogPost'
-import Pagination from '@/components/Pagination'
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
 
 export async function getStaticProps () {
-  const posts = await getAllPosts({ includePages: false })
-  const postsToShow = posts.slice(0, BLOG.postsPerPage)
-  const totalPosts = posts.length
-  const showNext = totalPosts > BLOG.postsPerPage
+    const favouritePosts = await getAllPosts({ includePages: false, home: 'favourites' })
+    const podcastPosts = await getAllPosts({ includePages: false, home: 'podcasts' })
   return {
     props: {
-      page: 1, // current page is 1
-      postsToShow,
-      showNext
+        favouritePosts,
+        podcastPosts
     },
     revalidate: 1
   }
 }
 
-const blog = ({ postsToShow, page, showNext }) => {
+const index = ({ favouritePosts, podcastPosts }) => {
+  const favouriteTitle = favouritePosts.length > 0 ? <h2 className='text-4xl font-bold mb-3'>Favorite Posts</h2> : ''
+  const podcastTitle = podcastPosts.length > 0 ? <h2 className='text-4xl font-bold mb-3'>Favorite Podcasts</h2> : ''
   return (
     <Container title={BLOG.title} description={BLOG.description}>
-      {postsToShow.map(post => (
+      {favouriteTitle}
+      {favouritePosts.map(post => (
         <BlogPost key={post.id} post={post} />
       ))}
-      {showNext && <Pagination page={page} showNext={showNext} />}
+      {podcastTitle}
+      {podcastPosts.map(post => (
+        <BlogPost key={post.id} post={post} />
+      ))}
+      <h2 className='text-4xl font-bold mt-8 mb-3'>Elsewhere</h2>
+      <ul>
+          <li><a href="https://www.linkedin.com/in/mohammed-ajroudi/">Linkedin</a></li>
+          <li><a href="https://github.com/ajroudi-mohammed">GitHub</a></li>
+      </ul>
+      <h2 className='text-4xl font-bold mt-8 mb-3'>Colophon</h2>
+      <p>
+      This site is built using NextJS and deployed using Vercel. I used tailwind for CSS and for the backend I use my favourite note taking app Notion. 
+      </p>
+
     </Container>
   )
 }
 
-export default blog
+export default index

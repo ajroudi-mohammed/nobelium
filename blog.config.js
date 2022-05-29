@@ -1,5 +1,5 @@
 const BLOG = {
-  title: "CRAIGARY",
+  title: "MAJROUDI",
   author: "Mohammed AJROUDI",
   email: "ajroudi.mohammed@gmail.com",
   link: "https://nobelium.vercel.app",
