@@ -22,7 +22,7 @@ const index = ({ favouritePosts, podcastPosts }) => {
   return (
     <Container title={BLOG.title} description={BLOG.description}>
       
-      <Jumbotron />
+      <!-- <Jumbotron /> -->
       
       {favouriteTitle}
       {favouritePosts.map(post => (
