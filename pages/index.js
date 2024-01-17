@@ -2,6 +2,7 @@ import Container from '@/components/Container'
 import BlogPost from '@/components/BlogPost'
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
+import Jambotron from '@/components/Jambotron'
 
 export async function getStaticProps () {
   const favouritePosts = await getAllPosts({ includePages: false, home: 'favourites' })
@@ -20,6 +21,7 @@ const index = ({ favouritePosts, podcastPosts }) => {
   const podcastTitle = podcastPosts.length > 0 ? <h2 className='text-4xl font-bold mb-3'>Favorite Podcasts</h2> : ''
   return (
     <Container title={BLOG.title} description={BLOG.description}>
+      <Jambotron />
       {favouriteTitle}
       {favouritePosts.map(post => (
         <BlogPost key={post.id} post={post} />
