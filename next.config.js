@@ -5,10 +5,7 @@ module.exports = {
   },
   eslint: {
     dirs: [
-      'components',
-      'layouts',
-      'lib',
-      'pages'
+      
     ]
   },
   async headers () {
