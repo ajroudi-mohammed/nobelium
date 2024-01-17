@@ -1,5 +1,6 @@
 import Container from '@/components/Container'
 import BlogPost from '@/components/BlogPost'
+import Jumbotron from '@/components/Jambotron'
 import { getAllPosts } from '@/lib/notion'
 import BLOG from '@/blog.config'
 
@@ -20,6 +21,9 @@ const index = ({ favouritePosts, podcastPosts }) => {
   const podcastTitle = podcastPosts.length > 0 ? <h2 className='text-4xl font-bold mb-3'>Favorite Podcasts</h2> : ''
   return (
     <Container title={BLOG.title} description={BLOG.description}>
+      
+      <Jumbotron />
+      
       {favouriteTitle}
       {favouritePosts.map(post => (
         <BlogPost key={post.id} post={post} />
